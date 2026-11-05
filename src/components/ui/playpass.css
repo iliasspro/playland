@@ -1,0 +1,195 @@
+.pass {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  --o: 0.35;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1.586;
+  perspective: 1200px;
+  container-type: inline-size;
+}
+.pass--sm {
+  max-width: 300px;
+}
+.pass--lg {
+  max-width: 520px;
+}
+.pass-flip {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.pass-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.4s var(--ease-out);
+  box-shadow: 0 0 0 1px rgba(196, 242, 235, 0.18), 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 60px -20px color-mix(in srgb, var(--rank) 60%, transparent);
+  padding: 6% 6.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  isolation: isolate;
+}
+.pass:hover .pass-face {
+  transition: transform 0.1s linear;
+}
+.pass-back {
+  transform: rotateY(180deg) rotateX(var(--rx)) rotateY(var(--ry));
+}
+.pass-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(95, 243, 218, 0.28), transparent 50%),
+    radial-gradient(90% 80% at 100% 100%, rgba(255, 45, 78, 0.28), transparent 55%),
+    linear-gradient(135deg, #12393c 0%, #0a1e23 45%, #160b10 100%);
+}
+.pass-watermark {
+  position: absolute;
+  right: -14%;
+  top: -18%;
+  width: 64% !important;
+  height: auto !important;
+  opacity: 0.08;
+  z-index: -2;
+  filter: grayscale(0.3);
+}
+.pass-holo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: var(--o);
+  mix-blend-mode: color-dodge;
+  background:
+    repeating-linear-gradient(115deg, rgba(95, 243, 218, 0.0) 0%, rgba(95, 243, 218, 0.35) 6%, rgba(143, 184, 255, 0.35) 12%, rgba(231, 123, 255, 0.35) 18%, rgba(255, 200, 61, 0.35) 24%, rgba(95, 243, 218, 0) 30%),
+    radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, 0.35), transparent 40%);
+  background-size: 200% 200%, 100% 100%;
+  background-position: var(--mx) var(--my), center;
+  transition: opacity 0.4s;
+}
+.pass-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, 0.18), transparent 35%);
+  opacity: var(--o);
+}
+.pass-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.pass-brand {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(11px, 3.6cqw, 15px);
+  letter-spacing: 0.08em;
+}
+.pass-sub {
+  font-size: clamp(8px, 2.4cqw, 10px);
+  letter-spacing: 0.2em;
+  color: var(--mint);
+}
+.pass-mid {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+}
+.pass-av {
+  position: relative;
+  display: inline-flex;
+  border-radius: 14px;
+}
+.pass-av.frame-neon::before,
+.pass-av.frame-gold::before,
+.pass-av.frame-holo::before {
+  border-radius: 16px;
+}
+.pass-tag {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(16px, 6.4cqw, 28px);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  word-break: break-word;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+.pass-tag.long {
+  font-size: clamp(13px, 4.9cqw, 22px);
+  word-break: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.pass-who {
+  min-width: 0;
+}
+.pass-rank {
+  margin-top: 4px;
+  font-size: clamp(9px, 2.8cqw, 12px);
+  letter-spacing: 0.16em;
+}
+.pass-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pass-xp {
+  height: 5px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.pass-xp i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #23b39b, var(--mint-hi));
+  box-shadow: 0 0 10px var(--mint-hi);
+}
+.pass-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: clamp(9px, 2.6cqw, 12px);
+  letter-spacing: 0.18em;
+  color: rgba(234, 251, 248, 0.7);
+}
+.pass-chip {
+  position: absolute;
+  left: 6.5%;
+  top: 42%;
+  width: 0;
+  height: 0;
+}
+.pass-back-in {
+  display: flex;
+  align-items: center;
+  gap: 6%;
+  height: 100%;
+}
+.pass-back-t {
+  font-size: clamp(11px, 3cqw, 13px);
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+.pass-flip-btn {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--panel-solid);
+}

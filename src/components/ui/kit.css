@@ -1,0 +1,324 @@
+/* ---------- button wrapper ---------- */
+.btn-wrap {
+  display: inline-flex;
+  transition: transform 0.35s var(--ease-out);
+}
+.btn-wrap.block {
+  display: flex;
+  width: 100%;
+}
+.btn-wrap.block .btn {
+  width: 100%;
+}
+.btn-in {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transform: skewX(12deg);
+}
+.btn-in svg {
+  flex: none;
+}
+
+/* ---------- countdown ---------- */
+.countdown {
+  display: inline-flex;
+  gap: 6px;
+  align-items: stretch;
+}
+.cd-seg {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(3, 14, 17, 0.6);
+  border: 1px solid var(--line);
+}
+.cd-num {
+  font-size: 18px;
+  color: var(--text);
+}
+.cd-lab {
+  font-family: var(--f-hud);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--mint);
+  letter-spacing: 0.1em;
+}
+.countdown--sm .cd-num {
+  font-size: 13px;
+}
+.countdown--sm .cd-seg {
+  padding: 2px 6px;
+}
+.countdown--lg .cd-num {
+  font-size: clamp(26px, 4vw, 40px);
+}
+.countdown--lg .cd-seg {
+  padding: 10px 14px;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+/* ---------- marquee ---------- */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee linear infinite;
+}
+.marquee-group {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- section head ---------- */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 820px;
+}
+.section-head--center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+.section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-index {
+  font-size: 13px;
+  color: var(--crimson);
+}
+.section-line {
+  width: 44px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--crimson), var(--mint-hi));
+  box-shadow: 0 0 10px var(--mint-hi);
+}
+.section-title {
+  font-size: clamp(34px, 5.6vw, 76px);
+}
+.section-sub {
+  font-size: clamp(16px, 1.5vw, 19px);
+  color: var(--text-dim);
+  max-width: 640px;
+}
+
+/* ---------- tilt ---------- */
+.tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  --ts: 1;
+  --px: 50%;
+  --py: 50%;
+  --glare: 0;
+  perspective: 900px;
+}
+.tilt-inner {
+  position: relative;
+  height: 100%;
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--ts));
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease-out);
+  will-change: transform;
+}
+.tilt:hover .tilt-inner {
+  transition: transform 0.12s linear;
+}
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--glare);
+  transition: opacity 0.4s;
+  background: radial-gradient(500px circle at var(--px) var(--py), rgba(255, 255, 255, 0.14), transparent 45%);
+  mix-blend-mode: screen;
+  z-index: 5;
+}
+
+/* ---------- level ring / avatar ---------- */
+.level-ring {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+}
+.level-ring > svg {
+  position: absolute;
+  inset: 0;
+}
+.level-ring-in {
+  display: grid;
+  place-items: center;
+}
+.player-avatar {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+}
+.player-avatar .pixel-avatar {
+  box-shadow: 0 0 0 1px var(--line-2);
+}
+.pa-level {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--mint-hi), #2fd1b6);
+  color: #021012;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 12px rgba(95, 243, 218, 0.6);
+}
+.frame-neon::before,
+.frame-gold::before,
+.frame-holo::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  padding: 2px;
+  background: conic-gradient(from var(--fa, 0deg), var(--mint-hi), transparent 30%, var(--mint-hi) 50%, transparent 80%, var(--mint-hi));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: frame-spin 3s linear infinite;
+  filter: drop-shadow(0 0 6px var(--mint-hi));
+}
+.frame-gold::before {
+  background: conic-gradient(from var(--fa, 0deg), var(--gold-hi), var(--gold-lo), var(--gold-hi), var(--gold-lo), var(--gold-hi));
+  filter: drop-shadow(0 0 6px var(--gold));
+}
+.frame-holo::before {
+  background: conic-gradient(from var(--fa, 0deg), var(--mint-hi), #8fb8ff, var(--sqr), var(--crimson), var(--gold), var(--mint-hi));
+}
+@property --fa {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes frame-spin {
+  to { --fa: 360deg; }
+}
+
+/* ---------- modal ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(1, 6, 8, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  perspective: 1200px;
+}
+.modal {
+  width: min(520px, 100%);
+  max-height: min(88dvh, 820px);
+  overflow: auto;
+  background: linear-gradient(180deg, rgba(14, 40, 46, 0.95), rgba(4, 16, 19, 0.97));
+}
+.modal--wide {
+  width: min(880px, 100%);
+}
+.modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 14px 20px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(8, 26, 30, 0.96);
+  z-index: 2;
+}
+.modal-x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+}
+.modal-body {
+  padding: 22px;
+}
+
+/* ---------- glitch ---------- */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.glitch::before {
+  color: var(--crimson);
+  transform: translate(-2px, 0);
+  clip-path: inset(0 0 0 0);
+  mix-blend-mode: screen;
+  animation: glitch-a 3.2s infinite steps(1);
+  opacity: 0.85;
+}
+.glitch::after {
+  color: var(--mint-hi);
+  transform: translate(2px, 0);
+  mix-blend-mode: screen;
+  animation: glitch-b 3.2s infinite steps(1);
+  opacity: 0.85;
+}
+@keyframes glitch-a {
+  0%, 86%, 100% { clip-path: inset(0 0 100% 0); }
+  87% { clip-path: inset(10% 0 60% 0); transform: translate(-6px, 0); }
+  89% { clip-path: inset(60% 0 10% 0); transform: translate(4px, 0); }
+  91% { clip-path: inset(30% 0 40% 0); transform: translate(-3px, 0); }
+  93% { clip-path: inset(0 0 100% 0); }
+}
+@keyframes glitch-b {
+  0%, 86%, 100% { clip-path: inset(0 0 100% 0); }
+  88% { clip-path: inset(50% 0 20% 0); transform: translate(6px, 0); }
+  90% { clip-path: inset(15% 0 70% 0); transform: translate(-4px, 0); }
+  92% { clip-path: inset(70% 0 5% 0); transform: translate(3px, 0); }
+  94% { clip-path: inset(0 0 100% 0); }
+}
+
+/* ---------- currency pills ---------- */
+.cur {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--f-hud);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cur.gold {
+  color: var(--gold);
+}
+.cur.mint {
+  color: var(--mint-hi);
+}

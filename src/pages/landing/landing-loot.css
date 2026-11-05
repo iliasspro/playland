@@ -1,0 +1,143 @@
+/* ================================================================ LOOT */
+.loot-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.loot-rate {
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.loot-rate-v {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 28px;
+}
+.loot-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.loot-tilt {
+  height: 100%;
+}
+.loot {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--rc) 22%, transparent), transparent 60%),
+    linear-gradient(180deg, rgba(14, 38, 44, 0.85), rgba(4, 14, 17, 0.92));
+  border: 1px solid color-mix(in srgb, var(--rc) 35%, transparent);
+  overflow: hidden;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.loot:hover {
+  box-shadow: 0 0 50px -14px var(--rc);
+  border-color: color-mix(in srgb, var(--rc) 70%, transparent);
+}
+.loot--legendary::after,
+.loot--mythic::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent, color-mix(in srgb, var(--rc) 25%, transparent), transparent 30%);
+  animation: spin 6s linear infinite;
+  z-index: -1;
+}
+.loot--legendary,
+.loot--mythic {
+  isolation: isolate;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loot-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.loot-rarity {
+  color: var(--rc);
+  font-size: 11px;
+}
+.loot-lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--f-hud);
+  font-size: 11px;
+  color: var(--text-mute);
+}
+.loot-icon {
+  position: relative;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  color: var(--rc);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--rc) 60%, transparent));
+}
+.loot-hex {
+  position: absolute;
+  width: 84px;
+  height: 94px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--rc) 30%, transparent), color-mix(in srgb, var(--rc) 6%, transparent));
+}
+.loot-icon svg {
+  position: relative;
+  transition: transform 0.5s var(--ease-back);
+}
+.loot:hover .loot-icon svg {
+  transform: scale(1.18) rotate(-6deg);
+}
+.loot-name {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.15;
+}
+.loot-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  flex: 1;
+}
+.loot-cost {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  color: var(--gold);
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 1100px) {
+  .loot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .loot-grid {
+    gap: 10px;
+  }
+  .loot {
+    padding: 14px;
+  }
+  .loot-desc {
+    display: none;
+  }
+  .loot-icon {
+    height: 80px;
+  }
+}
+

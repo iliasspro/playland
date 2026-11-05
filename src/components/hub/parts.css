@@ -1,0 +1,249 @@
+.reward-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+/* ---------- quests ---------- */
+.quest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.quest {
+  --qc: var(--mint-hi);
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--qc) 7%, transparent), rgba(3, 14, 17, 0.55) 40%);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.quest--compact {
+  grid-template-columns: 40px 1fr auto;
+  padding: 10px 12px;
+  gap: 12px;
+}
+.quest--ready {
+  border-color: color-mix(in srgb, var(--qc) 60%, transparent);
+  box-shadow: 0 0 34px -12px var(--qc);
+  animation: quest-pulse 2s ease-in-out infinite;
+}
+@keyframes quest-pulse {
+  50% { box-shadow: 0 0 44px -8px var(--qc); }
+}
+.quest--done {
+  opacity: 0.6;
+}
+.quest-ic {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--qc);
+  background: color-mix(in srgb, var(--qc) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--qc) 35%, transparent);
+}
+.quest--compact .quest-ic {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+.quest-shape {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  padding: 2px;
+  border-radius: 6px;
+  background: var(--bg);
+  width: 18px;
+  height: 18px;
+}
+.quest-t {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-hud);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+.quest-d {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 2px 0 2px;
+}
+.quest-prog {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+.quest-prog .bar {
+  flex: 1;
+  height: 6px;
+}
+.quest-n {
+  font-size: 12px;
+  color: var(--text-dim);
+  min-width: 34px;
+  text-align: right;
+}
+.quest-r {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.claim-btn {
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-family: var(--f-hud);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #021012;
+  background: linear-gradient(180deg, #fff, var(--qc));
+  box-shadow: 0 0 22px -4px var(--qc);
+  animation: claim-bounce 1.2s ease-in-out infinite;
+}
+@keyframes claim-bounce {
+  50% { transform: translateY(-2px) scale(1.04); }
+}
+.quest-claimed {
+  font-size: 11px;
+  color: var(--text-mute);
+}
+@media (max-width: 560px) {
+  .quest {
+    grid-template-columns: 42px 1fr;
+  }
+  .quest-ic {
+    width: 42px;
+    height: 42px;
+  }
+  .quest-r {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ---------- activity ---------- */
+.activity {
+  display: flex;
+  flex-direction: column;
+}
+.act {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 2px;
+  border-bottom: 1px solid rgba(138, 208, 199, 0.07);
+}
+.act:last-child {
+  border-bottom: 0;
+}
+.act-ic {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(95, 243, 218, 0.07);
+  color: var(--mint);
+}
+.act--redeem .act-ic {
+  background: rgba(255, 200, 61, 0.08);
+  color: var(--gold);
+}
+.act--achievement .act-ic,
+.act--levelup .act-ic {
+  background: rgba(196, 107, 255, 0.1);
+  color: var(--r-epic);
+}
+.act--checkin .act-ic {
+  background: rgba(255, 45, 78, 0.1);
+  color: var(--crimson-hi);
+}
+.act-t {
+  font-size: 14px;
+  font-weight: 500;
+}
+.act-time {
+  font-size: 12px;
+}
+
+/* ---------- streak ---------- */
+.streak {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.streak-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.streak-flame {
+  filter: drop-shadow(0 0 16px rgba(255, 90, 70, 0.7));
+}
+.streak-n {
+  font-size: 44px;
+  line-height: 1;
+}
+.streak-n span {
+  font-size: 15px;
+  letter-spacing: 0;
+  margin-left: 6px;
+  color: var(--text-dim);
+  font-family: var(--f-hud);
+  text-transform: none;
+}
+.streak-track {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+.streak-dot {
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: rgba(3, 14, 17, 0.6);
+  color: var(--text-mute);
+}
+.streak-dot.on {
+  border-color: rgba(255, 90, 70, 0.45);
+  background: linear-gradient(180deg, rgba(255, 45, 78, 0.18), rgba(255, 140, 60, 0.05));
+}
+.streak-marks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.streak-marks span {
+  font-family: var(--f-hud);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--text-mute);
+}
+.streak-marks span.on {
+  color: var(--gold);
+  border-color: rgba(255, 200, 61, 0.4);
+  background: rgba(255, 200, 61, 0.06);
+}

@@ -1,0 +1,105 @@
+.wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  pointer-events: none;
+  overflow: hidden;
+}
+.wipe-panel {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -20%;
+  right: -20%;
+  transform-origin: center;
+}
+.wipe-panel--a {
+  background: linear-gradient(90deg, var(--crimson-lo), var(--crimson));
+  clip-path: polygon(18% 0, 100% 0, 82% 100%, 0 100%);
+}
+.wipe-panel--b {
+  background: radial-gradient(circle at 50% 50%, #0d2a2f, #020a0d 70%);
+  clip-path: polygon(22% 0, 96% 0, 78% 100%, 4% 100%);
+  display: grid;
+  place-items: center;
+  border-left: 2px solid var(--mint-hi);
+}
+.wipe-crest {
+  filter: drop-shadow(0 0 30px rgba(95, 243, 218, 0.5));
+}
+
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(95, 243, 218, 0.65);
+  box-shadow: 0 0 14px rgba(95, 243, 218, 0.25);
+  transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), margin 0.25s var(--ease-out), background 0.25s, border-color 0.25s, opacity 0.3s;
+  display: grid;
+  place-items: center;
+}
+.cursor-ring.is-hover {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border-color: var(--mint-hi);
+  background: rgba(95, 243, 218, 0.08);
+}
+.cursor-ring.has-label {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  background: rgba(95, 243, 218, 0.9);
+  border-color: transparent;
+}
+.cursor-ring.has-label::after {
+  content: attr(data-label);
+  font-family: var(--f-hud);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: #021012;
+}
+.cursor-ring.is-down {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--mint-hi);
+  box-shadow: 0 0 10px var(--mint-hi);
+}
+@media (pointer: coarse) {
+  .cursor-ring,
+  .cursor-dot {
+    display: none;
+  }
+}
+
+.page-loader {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+}
+.page-loader .crest {
+  animation: loader-pulse 1s ease-in-out infinite alternate;
+}
+@keyframes loader-pulse {
+  from { opacity: 0.4; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}

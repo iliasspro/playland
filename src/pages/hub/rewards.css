@@ -1,0 +1,230 @@
+/* reuse landing loot card styles */
+@import '../landing/landing-loot.css';
+
+.wallet {
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 240px;
+}
+.wallet-v {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wallet-v .display {
+  font-size: 40px;
+}
+.vouchers {
+  margin-bottom: 26px;
+}
+.voucher-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.voucher {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 250px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-align: left;
+  border: 1px dashed rgba(255, 200, 61, 0.5);
+  background: linear-gradient(90deg, rgba(255, 200, 61, 0.1), rgba(3, 14, 17, 0.6));
+  overflow: hidden;
+}
+.voucher::before,
+.voucher::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  translate: 0 -50%;
+}
+.voucher::before {
+  left: -8px;
+}
+.voucher::after {
+  right: -8px;
+}
+.voucher-ic {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--gold);
+  background: rgba(255, 200, 61, 0.12);
+  flex: none;
+}
+.voucher-mid {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.voucher-mid b {
+  font-family: var(--f-hud);
+  font-size: 14px;
+}
+.voucher-mid small {
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 0.08em;
+}
+.voucher-qr {
+  color: var(--gold);
+}
+.voucher.used {
+  filter: grayscale(1);
+  opacity: 0.55;
+  border-color: var(--line-2);
+}
+.voucher-stamp {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--crimson);
+  border: 2px solid var(--crimson);
+  padding: 2px 8px;
+  border-radius: 4px;
+  transform: rotate(-12deg);
+}
+.shop {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+}
+.shop-tilt {
+  height: 100%;
+}
+.shop-item.is-locked {
+  filter: grayscale(0.7);
+  opacity: 0.7;
+}
+.shop-stock {
+  font-size: 11px;
+  color: var(--crimson-hi);
+}
+.shop-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.shop-foot .loot-cost {
+  border: 0;
+  padding: 0;
+}
+.shop-buy {
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-family: var(--f-hud);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2a1700;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold));
+  box-shadow: 0 0 20px -6px var(--gold);
+  transition: transform 0.2s var(--ease-back);
+}
+.shop-buy:hover {
+  transform: scale(1.06);
+}
+.shop-need {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-mute);
+}
+.shop-need-bar {
+  width: 80px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.shop-need-bar i {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+}
+.confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+.confirm-ic {
+  width: 86px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  color: #0a1a1f;
+  background: linear-gradient(160deg, #fff, var(--rc) 50%, color-mix(in srgb, var(--rc) 50%, #000));
+}
+.confirm-math {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: rgba(3, 14, 17, 0.6);
+  border: 1px solid var(--line);
+}
+.vview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  perspective: 900px;
+}
+.vview-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1c4a4b, #0a1d22);
+  border: 1px solid rgba(255, 200, 61, 0.45);
+  box-shadow: 0 0 50px -14px rgba(255, 200, 61, 0.55);
+}
+.vview-top {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.vview-t {
+  font-size: 28px;
+}
+.vview-cut {
+  margin: 0 14px;
+  border-top: 2px dashed rgba(255, 255, 255, 0.2);
+}
+.vview-qr {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.vview-code {
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}

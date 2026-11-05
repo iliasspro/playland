@@ -1,0 +1,78 @@
+/* ==========================================================================
+   PLAY LAND · design tokens
+   Palette sampled from the official crest (Instagram @playlandkenitra) and
+   the venue itself: ink-black facade, mint crest details, red-lit rooms.
+   ========================================================================== */
+:root {
+  /* ink — backgrounds */
+  --bg: #020a0d;
+  --bg-2: #051317;
+  --bg-3: #0a1d22;
+  --panel: rgba(9, 28, 33, 0.72);
+  --panel-2: rgba(14, 40, 46, 0.66);
+  --panel-solid: #0a1c21;
+  --line: rgba(138, 208, 199, 0.14);
+  --line-2: rgba(138, 208, 199, 0.26);
+  --line-strong: rgba(138, 208, 199, 0.45);
+
+  /* brand — crest mint */
+  --mint: #8ad0c7;
+  --mint-hi: #5ff3da;
+  --mint-pale: #c4f2eb;
+  --mint-lo: #2f6662;
+  --teal: #1e4a4b;
+  --teal-deep: #122c2f;
+
+  /* venue — red room */
+  --crimson: #ff2d4e;
+  --crimson-hi: #ff5a74;
+  --crimson-lo: #8e1430;
+  --burgundy: #3f0b1b;
+
+  /* economy */
+  --gold: #ffc83d;
+  --gold-hi: #ffe48a;
+  --gold-lo: #b7791f;
+
+  /* shape accents (controller face buttons) */
+  --tri: #5ff3da;
+  --cir: #ff2d4e;
+  --crs: #6fa8ff;
+  --sqr: #e77bff;
+
+  /* rarity */
+  --r-common: #9db8b4;
+  --r-rare: #6fa8ff;
+  --r-epic: #c46bff;
+  --r-legendary: #ffc83d;
+  --r-mythic: #ff2d4e;
+
+  /* text */
+  --text: #eafbf8;
+  --text-dim: #a3bfbb;
+  --text-mute: #5f7d79;
+
+  /* type */
+  --f-display: 'Unbounded Variable', 'Unbounded', system-ui, sans-serif;
+  --f-hud: 'Chakra Petch', ui-monospace, system-ui, sans-serif;
+  --f-body: 'Saira Variable', 'Saira', system-ui, sans-serif;
+
+  /* glow */
+  --glow-mint: 0 0 0 1px rgba(95, 243, 218, 0.35), 0 0 22px rgba(95, 243, 218, 0.35), 0 0 60px rgba(95, 243, 218, 0.15);
+  --glow-crimson: 0 0 0 1px rgba(255, 45, 78, 0.4), 0 0 22px rgba(255, 45, 78, 0.4), 0 0 60px rgba(255, 45, 78, 0.18);
+  --glow-gold: 0 0 0 1px rgba(255, 200, 61, 0.4), 0 0 22px rgba(255, 200, 61, 0.35), 0 0 60px rgba(255, 200, 61, 0.15);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* layout */
+  --gutter: clamp(16px, 4vw, 48px);
+  --maxw: 1320px;
+  --nav-h: 72px;
+  --radius: 10px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+
+  color-scheme: dark;
+}

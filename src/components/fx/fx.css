@@ -1,0 +1,269 @@
+.fx-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 950;
+  overflow: hidden;
+}
+.fx-p {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: -11px 0 0 -11px;
+  will-change: transform;
+}
+.fx-p--coin {
+  filter: drop-shadow(0 0 8px rgba(255, 200, 61, 0.8));
+}
+.fx-p--xp {
+  margin: -8px 0 0 -8px;
+  filter: drop-shadow(0 0 8px rgba(95, 243, 218, 0.9));
+}
+.fx-float {
+  position: absolute;
+  transform: translateX(-50%);
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.35);
+}
+.fx-float--gold {
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(255, 200, 61, 0.8), 0 3px 0 #7a4a06;
+}
+.fx-float--mint {
+  color: var(--mint-hi);
+  text-shadow: 0 0 18px rgba(95, 243, 218, 0.8), 0 3px 0 #0b3b37;
+}
+
+/* ---------- toasts ---------- */
+.fx-toasts {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 980;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  width: min(460px, calc(100% - 24px));
+}
+.fx-toast {
+  pointer-events: auto;
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  padding: 12px 16px 12px 12px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(14, 40, 46, 0.96), rgba(4, 16, 19, 0.97));
+  border: 1px solid var(--line-2);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+}
+.fx-toast-bar {
+  width: 4px;
+  border-radius: 4px;
+  background: var(--mint-hi);
+  box-shadow: 0 0 12px var(--mint-hi);
+  flex: none;
+}
+.fx-toast--crimson .fx-toast-bar {
+  background: var(--crimson);
+  box-shadow: 0 0 12px var(--crimson);
+}
+.fx-toast--gold .fx-toast-bar {
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+}
+.fx-toast-title {
+  font-family: var(--f-hud);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.fx-toast-body {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.fx-ach {
+  --rc: var(--gold);
+  position: relative;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(10, 30, 36, 0.98), rgba(16, 44, 50, 0.98));
+  border: 1px solid color-mix(in srgb, var(--rc) 50%, transparent);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 0 40px -6px color-mix(in srgb, var(--rc) 55%, transparent), 0 24px 50px -12px rgba(0, 0, 0, 0.8);
+  transform-origin: center;
+}
+.fx-ach-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: #0a1a1f;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--rc) 55%, color-mix(in srgb, var(--rc) 60%, #000));
+  box-shadow: 0 0 20px color-mix(in srgb, var(--rc) 70%, transparent);
+}
+.fx-ach-kicker {
+  font-family: var(--f-hud);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.fx-ach-name {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 17px;
+}
+.fx-ach-xp {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--f-hud);
+  font-weight: 700;
+  color: var(--mint-hi);
+  white-space: nowrap;
+}
+.fx-ach-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.22) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: ach-shine 1.4s 0.4s var(--ease-snap) forwards;
+}
+@keyframes ach-shine {
+  to { transform: translateX(100%); }
+}
+
+/* ---------- level up ---------- */
+.lvl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 990;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, rgba(18, 60, 60, 0.9), rgba(1, 6, 8, 0.96) 60%);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  padding: 24px;
+}
+.lvl-rays {
+  position: absolute;
+  width: 220vmax;
+  height: 220vmax;
+  left: 50%;
+  top: 45%;
+  margin: -110vmax 0 0 -110vmax;
+  background: repeating-conic-gradient(from 0deg, rgba(95, 243, 218, 0.1) 0deg 6deg, transparent 6deg 18deg);
+  animation: rays 18s linear infinite;
+  mask-image: radial-gradient(circle, #000 0%, transparent 45%);
+}
+@keyframes rays {
+  to { transform: rotate(360deg); }
+}
+.lvl-ring {
+  position: absolute;
+  width: min(70vmin, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(95, 243, 218, 0.5);
+  box-shadow: 0 0 60px rgba(95, 243, 218, 0.35), inset 0 0 60px rgba(95, 243, 218, 0.25);
+  top: 45%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.lvl-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.lvl-kicker {
+  color: var(--mint-hi);
+  font-size: 14px;
+}
+.lvl-number {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: clamp(110px, 22vw, 240px);
+  line-height: 0.85;
+  filter: drop-shadow(0 0 40px rgba(95, 243, 218, 0.45));
+}
+.lvl-lv {
+  font-size: 0.22em;
+  margin-top: 0.3em;
+  color: var(--crimson);
+  text-shadow: 0 0 20px var(--crimson);
+}
+.lvl-sub {
+  font-family: var(--f-hud);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.lvl-rank {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  max-width: 560px;
+}
+.lvl-rank-name {
+  font-size: clamp(34px, 6vw, 56px);
+  text-shadow: 0 0 30px currentColor;
+}
+.lvl-perks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+@media (max-width: 560px) {
+  .lvl-rank {
+    flex-direction: column;
+    text-align: center;
+  }
+  .lvl-perks {
+    justify-content: center;
+  }
+}
+
+/* HUD bump when particles land */
+.bump {
+  animation: bump 0.32s var(--ease-back);
+}
+@keyframes bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); filter: brightness(1.4); }
+  100% { transform: scale(1); }
+}
+
+body.shake {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 2px); }
+  40% { transform: translate(5px, -3px); }
+  60% { transform: translate(-4px, 3px); }
+  80% { transform: translate(3px, -1px); }
+}
