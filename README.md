@@ -2,6 +2,8 @@
 
 A gaming-themed website for **Play Land** (PS5 arena) plus a full loyalty ecosystem prototype: QR check-ins, XP and coins, 59 levels and 7 ranks, quests, achievements, a rewards shop, a season pass, leaderboards and squads, live station map, tournaments, arcade mini-games and a staff console.
 
+<img src="docs/preview.webp" width="640" alt="Play Land preview">
+
 Everything runs in the browser with **mock data** (saved in `localStorage`). No backend, no login.
 
 ## Run it
